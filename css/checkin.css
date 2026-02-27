@@ -1,0 +1,129 @@
+/* Check-in screen */
+.checkin-greeting {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-xl);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.checkin-nudges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.checkin-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.checkin-row {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.checkin-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Feeling picker */
+.feeling-picker {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.feeling-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-sm) var(--space-xs);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 22px;
+  min-height: 44px;
+  background: var(--surface);
+  transition: all 0.2s ease;
+}
+
+.feeling-btn .feeling-label {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.feeling-btn.active {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.2);
+}
+
+.feeling-btn.active .feeling-label {
+  color: var(--accent-mid);
+}
+
+/* Meal rater */
+.meal-rater {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.meal-rater-label {
+  width: 80px;
+  font-size: 14px;
+  font-weight: 500;
+  flex-shrink: 0;
+  color: var(--dim);
+}
+
+.meal-rater-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.meal-rater-buttons .btn {
+  flex: 1;
+  font-size: 13px;
+  padding: var(--space-sm);
+}
+
+/* Toggle group */
+.toggle-group {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.toggle-group .btn {
+  flex: 1;
+}
+
+.toggle-yes.active {
+  border-color: var(--green);
+  background: var(--green-bg);
+  color: var(--green);
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.2);
+}
+
+.toggle-no.active {
+  border-color: var(--amber);
+  background: var(--amber-bg);
+  color: var(--amber-light);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.2);
+}
+
+/* Save button area */
+.checkin-save {
+  margin-top: var(--space-lg);
+}

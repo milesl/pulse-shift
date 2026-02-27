@@ -1,0 +1,134 @@
+/* Settings screen */
+.settings-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-xl);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.settings-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.settings-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+  margin-bottom: var(--space-md);
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Setup wizard */
+.setup-screen {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2xl) var(--space-lg);
+  background: var(--bg);
+}
+
+.setup-logo {
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--space-lg);
+  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.4));
+}
+
+.setup-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-xs);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.setup-subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: var(--space-2xl);
+  text-align: center;
+}
+
+.setup-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.setup-actions {
+  margin-top: var(--space-lg);
+}
+
+/* Confirm dialog */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: var(--space-lg);
+}
+
+.confirm-dialog {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  max-width: 320px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.confirm-dialog p {
+  font-size: 15px;
+  margin-bottom: var(--space-xl);
+}
+
+.confirm-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.confirm-actions .btn {
+  flex: 1;
+}
+
+/* About */
+.about-info {
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.about-version {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: var(--space-xs);
+}
+
+.about-tagline {
+  font-size: 14px;
+  color: var(--dim);
+  font-style: italic;
+  margin-top: var(--space-sm);
+}
