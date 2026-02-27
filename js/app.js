@@ -62,7 +62,7 @@ const app = createApp({
   template: `
     <!-- Splash -->
     <div class="splash" :class="{ 'fade-out': !showSplash }">
-      <img src="/icons/logo.svg" alt="Pulse Shift" class="splash-logo">
+      <img src="icons/logo.svg" alt="Pulse Shift" class="splash-logo">
       <div class="splash-title">Pulse Shift</div>
       <div class="splash-tagline">Small shifts. Big change.</div>
     </div>

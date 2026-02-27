@@ -61,7 +61,7 @@ const SetupWizard = {
   },
   template: `
     <div class="setup-screen">
-      <img src="/icons/logo.svg" alt="Pulse Shift" class="setup-logo">
+      <img src="icons/logo.svg" alt="Pulse Shift" class="setup-logo">
       <h1 class="setup-title">Pulse Shift</h1>
       <p class="setup-subtitle">Set your targets. Be realistic \u2014 this works when you are.</p>
 
