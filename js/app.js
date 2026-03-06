@@ -7,7 +7,6 @@ const app = createApp({
     TabBar,
     SetupWizard,
     CheckinScreen,
-    DietScreen,
     InjuriesScreen,
     DashboardScreen,
     SettingsScreen
@@ -77,7 +76,6 @@ const app = createApp({
       <app-header @settings="openSettings" :show-settings="currentScreen !== 'settings'" />
 
       <checkin-screen v-if="currentScreen === 'checkin'" />
-      <diet-screen v-if="currentScreen === 'diet'" />
       <injuries-screen v-if="currentScreen === 'injuries'" />
       <dashboard-screen v-if="currentScreen === 'dashboard'" />
       <settings-screen

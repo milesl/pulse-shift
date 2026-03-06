@@ -4,19 +4,11 @@ const CheckinScreen = {
     const today = Store.today();
     const existing = Store.getCheckin(today);
     const profile = Store.getProfile();
-    const recoveryLog = Store.getRecoveryLog(today);
     return {
       today,
       profileName: profile.name || '',
       saved: false,
       nudges: Nudges.generate(),
-      activeRecovery: [...recoveryLog.types],
-      recoveryTypes: [
-        { id: 'stretch', emoji: '\uD83E\uDDD8', label: 'Stretch/Yoga' },
-        { id: 'walk', emoji: '\uD83D\uDEB6', label: 'Light walk' },
-        { id: 'full_rest', emoji: '\uD83D\uDECB\uFE0F', label: 'Full rest' },
-        { id: 'foam_roll', emoji: '\uD83D\uDC86', label: 'Foam roll' }
-      ],
       form: {
         weight: existing?.weight ?? '',
         bodyFat: existing?.bodyFat ?? '',
@@ -24,6 +16,8 @@ const CheckinScreen = {
         breakfast: existing?.meals?.breakfast ?? '',
         lunch: existing?.meals?.lunch ?? '',
         dinner: existing?.meals?.dinner ?? '',
+        snacks: existing?.meals?.snacks ?? '',
+        beer: existing?.meals?.beer ?? '',
         overallDiet: existing?.overallDiet ?? '',
         trained: existing?.trained ?? null,
         restDay: existing?.restDay ?? null
@@ -46,15 +40,6 @@ const CheckinScreen = {
       this.form.restDay = val;
       if (val === true) this.form.trained = false;
     },
-    toggleRecovery(id) {
-      const idx = this.activeRecovery.indexOf(id);
-      if (idx >= 0) {
-        this.activeRecovery.splice(idx, 1);
-      } else {
-        this.activeRecovery.push(id);
-      }
-      Store.saveRecoveryLog(this.today, this.activeRecovery);
-    },
     save() {
       Store.saveCheckin(this.today, {
         weight: this.form.weight ? Number(this.form.weight) : null,
@@ -63,7 +48,9 @@ const CheckinScreen = {
         meals: {
           breakfast: this.form.breakfast,
           lunch: this.form.lunch,
-          dinner: this.form.dinner
+          dinner: this.form.dinner,
+          snacks: this.form.snacks,
+          beer: this.form.beer
         },
         overallDiet: this.form.overallDiet,
         trained: this.form.trained,
@@ -121,6 +108,8 @@ const CheckinScreen = {
             <meal-rater label="Breakfast" v-model="form.breakfast" />
             <meal-rater label="Lunch" v-model="form.lunch" />
             <meal-rater label="Dinner" v-model="form.dinner" />
+            <meal-rater label="Snacks" v-model="form.snacks" />
+            <meal-rater label="Beer" v-model="form.beer" />
           </div>
         </div>
 
@@ -144,23 +133,6 @@ const CheckinScreen = {
         <div class="form-group">
           <label class="label">Rest day?</label>
           <toggle-group :modelValue="form.restDay" @update:modelValue="setRestDay" />
-        </div>
-
-        <!-- Recovery activities -->
-        <div class="form-group">
-          <label class="label">Recovery today</label>
-          <div class="recovery-grid" style="margin-top: var(--space-sm);">
-            <button
-              v-for="r in recoveryTypes"
-              :key="r.id"
-              class="recovery-toggle"
-              :class="{ active: activeRecovery.includes(r.id) }"
-              @click="toggleRecovery(r.id)"
-            >
-              <span class="recovery-toggle-emoji">{{ r.emoji }}</span>
-              <span>{{ r.label }}</span>
-            </button>
-          </div>
         </div>
 
         <!-- Save -->

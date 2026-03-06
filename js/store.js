@@ -217,29 +217,26 @@ const Store = {
     }).length;
   },
 
-  // Get weekday beers this week
-  getWeekdayBeersThisWeek() {
-    const temptations = this.getTemptations();
+  // Count weekday days with bad/okay beer rating (Mon-Thu = indices 0-3)
+  getWeekdayBeerDays() {
+    const checkins = this.getCheckins();
     const weekDates = this.getCurrentWeekDates();
     let count = 0;
-    // Mon-Thu = indices 0-3
     for (let i = 0; i < 4; i++) {
-      const date = weekDates[i];
-      const treats = temptations[date] || [];
-      count += treats.filter(t => t.type === 'beer').length;
+      const ci = checkins[weekDates[i]];
+      if (ci?.meals?.beer && ci.meals.beer !== 'good') count++;
     }
     return count;
   },
 
-  // Get total treats this week
-  getTreatsThisWeek() {
-    const temptations = this.getTemptations();
+  // Count days with bad beer rating this week
+  getBadBeerDaysThisWeek() {
+    const checkins = this.getCheckins();
     const weekDates = this.getCurrentWeekDates();
-    let count = 0;
-    weekDates.forEach(date => {
-      count += (temptations[date] || []).length;
-    });
-    return count;
+    return weekDates.filter(date => {
+      const ci = checkins[date];
+      return ci?.meals?.beer === 'bad';
+    }).length;
   },
 
   // Check if weight is in plateau (±0.5kg for 14+ days)

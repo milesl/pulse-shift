@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pulse-shift-v3';
+const CACHE_NAME = 'pulse-shift-v4';
 const STATIC_ASSETS = [
   './',
   'index.html',
@@ -25,7 +25,6 @@ const STATIC_ASSETS = [
   'js/components/WeekStrip.js',
   'js/screens/SetupWizard.js',
   'js/screens/CheckinScreen.js',
-  'js/screens/DietScreen.js',
   'js/screens/InjuriesScreen.js',
   'js/screens/DashboardScreen.js',
   'js/screens/SettingsScreen.js',

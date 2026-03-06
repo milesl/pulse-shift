@@ -22,7 +22,6 @@ const TabBar = {
     return {
       tabs: [
         { id: 'checkin', icon: '\u2713', label: 'Check-in' },
-        { id: 'diet', icon: '\u25C9', label: 'Diet' },
         { id: 'injuries', icon: '\u2661', label: 'Injuries' },
         { id: 'dashboard', icon: '\u25A6', label: 'Dashboard' }
       ]

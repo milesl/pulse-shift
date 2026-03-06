@@ -40,7 +40,6 @@ const DashboardScreen = {
     showBfChart() {
       return this.bfReadings.length >= 2;
     },
-    // Weight chart data
     weightChartBars() {
       if (!this.weighIns.length) return [];
       const weights = this.weighIns.map(w => w.weight);
@@ -54,7 +53,6 @@ const DashboardScreen = {
         color: 'var(--accent)'
       }));
     },
-    // BF chart data
     bfChartBars() {
       if (!this.bfReadings.length) return [];
       const values = this.bfReadings.map(r => r.bodyFat);
@@ -68,7 +66,6 @@ const DashboardScreen = {
         color: 'var(--accent-mid)'
       }));
     },
-    // Diet week
     weekDays() {
       const dates = Store.getCurrentWeekDates();
       const checkins = Store.getCheckins();
@@ -79,30 +76,27 @@ const DashboardScreen = {
     },
     dietBars() {
       const heights = { good: 100, okay: 60, bad: 30 };
-      const colors = { good: 'var(--green)', okay: 'var(--amber)', bad: 'var(--red)' };
       const labels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
       return this.weekDays.map((d, i) => ({
         height: heights[d.rating] || 8,
-        color: colors[d.rating] || 'var(--border)',
         label: labels[i],
         rating: d.rating
       }));
     },
-    // Meal grid
     mealGrid() {
       const dates = Store.getCurrentWeekDates();
       const checkins = Store.getCheckins();
-      const meals = ['breakfast', 'lunch', 'dinner'];
+      const meals = ['breakfast', 'lunch', 'dinner', 'snacks', 'beer'];
+      const mealLabels = { breakfast: 'Bre', lunch: 'Lun', dinner: 'Din', snacks: 'Snk', beer: 'Beer' };
       const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
       return {
         dayLabels,
         meals: meals.map(m => ({
-          label: m.charAt(0).toUpperCase() + m.slice(1, 3),
+          label: mealLabels[m],
           days: dates.map(date => checkins[date]?.meals?.[m] || '')
         }))
       };
     },
-    // Week stats
     goodDietDays() {
       return Store.getGoodDietDaysThisWeek();
     },
@@ -112,8 +106,8 @@ const DashboardScreen = {
     restDays() {
       return Store.getRestDaysThisWeek();
     },
-    treatsThisWeek() {
-      return Store.getTreatsThisWeek();
+    badBeerDays() {
+      return Store.getBadBeerDaysThisWeek();
     },
     activeInjuries() {
       return Store.getActiveInjuries();
@@ -215,7 +209,7 @@ const DashboardScreen = {
         <stat-box label="Good diet days" :value="goodDietDays + '/7'" :color="goodDietDays >= 5 ? 'var(--green)' : 'var(--text)'" />
         <stat-box label="Clean streak" :value="cleanStreak + 'd'" :color="cleanStreak >= 5 ? 'var(--green)' : 'var(--text)'" />
         <stat-box label="Rest days" :value="restDays + '/2'" :color="restDays >= 2 ? 'var(--green)' : 'var(--amber)'" />
-        <stat-box label="Treats" :value="treatsThisWeek" :color="treatsThisWeek > 3 ? 'var(--red)' : 'var(--text)'" />
+        <stat-box label="Bad beer days" :value="badBeerDays" :color="badBeerDays > 0 ? 'var(--red)' : 'var(--green)'" />
       </div>
 
       <!-- Active injuries -->

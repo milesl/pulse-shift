@@ -6,7 +6,7 @@ const Nudges = {
     const consecutiveTraining = Store.getConsecutiveTrainingDays();
     const activeInjuries = Store.getActiveInjuries();
     const badDietDays = Store.getBadDietDaysThisWeek();
-    const weekdayBeers = Store.getWeekdayBeersThisWeek();
+    const weekdayBeerDays = Store.getWeekdayBeerDays();
     const cleanStreak = Store.getCleanStreak();
     const restDays = Store.getRestDaysThisWeek();
     const weighIns = Store.getLastWeighIns(14);
@@ -78,11 +78,11 @@ const Nudges = {
     }
 
     // Weekday beers
-    if (weekdayBeers > 0) {
+    if (weekdayBeerDays > 0) {
       nudges.push({
         id: 'weekday_beer',
         type: 'warning',
-        message: `${weekdayBeers} weekday beer${weekdayBeers > 1 ? 's' : ''} this week. Weekday beers are empty calories that directly slow your fat loss. Save it for the weekend.`
+        message: `${weekdayBeerDays} weekday beer day${weekdayBeerDays > 1 ? 's' : ''} this week. Weekday beers are empty calories that directly slow your fat loss. Save it for the weekend.`
       });
     }
 
